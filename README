@@ -1,0 +1,8 @@
+jQuery DropBear - Version 1.0
+-----------------------------
+See demo.html for examples and usage.
+Minified using http://www.refresh-sf.com/yui/
+
+This plugin allows inline embedding of menu and toolbars. I needed something that was minimal and easy to configure to display inline menus for links. While I was working on 
+this I also ran into an issue with "select" tags which I needed to extend into drop downs. This is a another great drop down plugin http://code.google.com/p/dropdown-check-list/
+but I didn't like it's reliance on jQuery UI and it wasn't quite there for reusing a single plugin for all my drop downs. 

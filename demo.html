@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<link rel="stylesheet" href="./css/jquery-dropbear.css" type="text/css" media="screen" />
+	
+	<script language="javascript" type="text/javascript" src="./js/jquery-1.5.2.min.js"></script>
+	<script language="javascript" type="text/javascript" src="./js/jquery-dropbear-1.0.min.js"></script>
+	<script language="javascript">
+	$(function() {
+		$('a.simple-dropbear').dropbear();
+		$('a.callback-dropbear').dropbear({fnHide:dropBear});
+		$('a.simple-dropbear-event').dropbear({showTrigger:'mouseover'});
+
+		$('#dropdown').dropbear({linkTitle:'Select Me'});
+		
+		function dropBear(values) {
+			alert('Selected: '+values);
+		}
+	});
+	</script>
+</head>
+<body>
+	<h1>DropBear jQuery Plugin</h1>
+	<h2>Version 1.0</h2>
+	This plugin allows inline embedding of menu and toolbars. I needed something that was minimal and easy to configure to display inline menus for links. While I was working on 
+	this I also ran into an issue with "select" tags which I needed to extend into drop downs. This is a another great drop down plugin http://code.google.com/p/dropdown-check-list/
+	but I didn't like it's reliance on jQuery UI and it wasn't quite there for reusing a single plugin for all my drop downs. 
+
+	<h2>Examples</h2>
+	<p>
+		Simple drop down test.
+	</p>
+	<a href="#test" class="simple-dropbear">Click Me</a>
+	<ul id="test" class="dropbear-wrapper" style="width:200px;color:20px;position:absolute;display:none;">
+		<li><input type="checkbox" name="test" value="1" /> This is a test</li>
+		<li><input type="checkbox" name="test" value="2" /> Second test</li>
+	</ul>
+	
+	<p>
+		Convert select tag to dropdown. 
+	</p>
+	<select name="dropdown" id="dropdown" multiple="multiple">
+		<option value="1">This is a test</option>
+		<option value="2">Second Test</option>
+	</select>
+	
+	<p>
+		Drop down with callback.
+	</p>
+	<a href="#test2" class="callback-dropbear">Click Me</a>
+	<ul id="test2" class="dropbear-wrapper" style="width:200px;color:20px;position:absolute;display:none;">
+		<li><input type="checkbox" name="test" value="1" /> This is a test</li>
+		<li><input type="checkbox" name="test" value="2" /> Second test</li>
+	</ul>
+	
+	<p>
+		Drop down with mouseover for expand.
+	</p>
+	<a href="#test3" class="simple-dropbear-event">Mouse Over</a>
+	<ul id="test3" class="dropbear-wrapper" style="width:200px;color:20px;position:absolute;display:none;">
+		<li><input type="checkbox" name="test" value="1" /> This is a test</li>
+		<li><input type="checkbox" name="test" value="2" /> Second test</li>
+	</ul>
+	
+	<h2>How It Works</h2>
+	This plugin looks for a child div for all all a elements by id referenced through href tag. It doesn't have to be an a element since you can call the plugin 
+	on anything you want (not very well tested). When replacing the select tags, the plugin will generate replacement DOM and hide the element. If your select 
+	list has multiple attached to it, selection items are automatically converted to checkboxes and by default to radio input.
+	
+	<h2>How To Use It</h2>
+	This is the minimal invocation of DropBear.
+	<pre>
+		$(function() { 
+			$('a.dropbear').dropbear();
+		});
+	</pre>
+	
+	Initiate DropBear with callback.
+	<pre>
+		$(function() { 
+			$('a.dropbear').dropbear({fnHide:dropBear});
+		});
+		
+		function dropBear(values) {
+			alert('Selected: '+values);
+		}
+	</pre>
+	
+	Use alternative invocation such as mouseover.
+	<pre>
+		$(function() { 
+			$('a.dropbear').dropbear({showTrigger:'mouseover'});
+		});
+	</pre>
+	
+	<h2>Options</h2>
+	<ul style="background:none;border:none;width:auto;">
+		<li><strong>showTrigger</strong>: default 'click'. Change the trigger for drop down invocation.	</li>
+		<li><strong>hideTrigger</strong>: default 'mouseout'. Change the trigger for removing the drop down.</li>
+		<li><strong>fnHide</strong>: default null. Set callback when drop down hides.</li>
+		<li><strong>position</strong>: default 'absolute'. If you need to change the positioning of the drop down. This can also be done in CSS.</li>
+		<li><strong>linkTitle</strong>: default 'Select'. If you want to override the default title. Useful for select elements.</li>
+	</ul>
+	
+	<h2>Change Log</h2>
+	<ul style="background:none;border:none;width:auto;">
+		<li><strong>1.0 on May 02, 2011</strong></li>
+		<li>Initial release.</li>
+	</ul>
+	
+	<h2>License</h2>
+	DropBear is licensed under <a href="http://www.opensource.org/licenses/mit-license.php">MIT</a> and <a href="http://www.gnu.org/licenses/gpl.html">GPL</a> licenses.
+</body>
+</html>

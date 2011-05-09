@@ -1,0 +1,35 @@
+body {
+	font-family: verdana, sans-serif;
+	font-size:12px;
+}
+
+ul.dropbear-wrapper {
+	background-color:#fff;
+	border: solid 1px #ccc;
+	width: 200px;
+	list-style: none;
+	padding:0;
+	margin:0; 
+}
+
+	ul.dropbear-select-wrapper {
+		border:none;
+	}
+	
+pre {
+
+}
+	
+/* Dropbear specific CSS */
+.dropbear {
+	border: solid 1px #ccc;
+	padding: 2px 16px 2px 2px;
+	text-decoration: none;
+	color:#333;
+	background: #eee url(../images/right.png) no-repeat right center;
+}
+
+.dropbear.hover {
+	color:#000;
+	background: #eee url(../images/down.png) no-repeat right center;
+}
